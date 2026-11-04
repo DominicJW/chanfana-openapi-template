@@ -11,5 +11,4 @@ export const tasksRouter = fromHono(new Hono());
 tasksRouter.get("/", TaskList);
 tasksRouter.post("/", TaskCreate);
 tasksRouter.get("/:id", TaskRead);
-tasksRouter.put("/:id", TaskUpdate);
 tasksRouter.delete("/:id", TaskDelete);
