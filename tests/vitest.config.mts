@@ -18,6 +18,7 @@ export default defineConfig({
 				compatibilityFlags: ["experimental", "nodejs_compat"],
 				bindings: {
 					MIGRATIONS: migrations,
+					API_KEY: "test-api-key",
 				},
 			},
 		}),

@@ -1,4 +1,6 @@
 {
+	// API_KEY is a Worker secret or variable. Set it in the Cloudflare dashboard
+	// (Settings → Variables and Secrets). Local dev reads it from .dev.vars.
 	"compatibility_date": "2025-10-08",
 	"main": "src/index.ts",
 	"name": "chanfana-openapi-template",
