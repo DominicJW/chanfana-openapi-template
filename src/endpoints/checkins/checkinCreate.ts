@@ -4,14 +4,20 @@ import { CheckinModel } from "./base";
 
 export class CheckinCreate extends D1CreateEndpoint<HandleArgs> {
 	_meta = {
-		model: CheckinModel,
-		fields: CheckinModel.schema.pick({
-			lat: true,
-			lon: true,
-			provider: true,
-			fix_timestamp: true,
-			client_timestamp: true
-			//server timestamp missing on purpose as well as id
-		}),
+	  model: CheckinModel,
+	  fields: CheckinModel.schema.pick({
+		lat: true,
+		lon: true,
+		accuracy: true,
+		provider: true,
+		stale: true,
+		fix_timestamp: true,
+		client_timestamp: true,
+		battery: true,
+		seq: true,
+		interval_min: true,
+		error: true,
+	  }).partial(),
 	};
-}
+  }
+  
