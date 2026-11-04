@@ -7,8 +7,8 @@ export class CheckinCreate extends D1CreateEndpoint<HandleArgs> {
 		model: CheckinModel,
 		fields: CheckinModel.schema.pick({
 			lat: true,
-			long: true,
-			source: true,
+			lon: true,
+			provider: true,
 			fix_timestamp: true,
 			client_timestamp: true
 			//server timestamp missing on purpose as well as id
