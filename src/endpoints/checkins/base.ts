@@ -9,6 +9,7 @@ export const checkin = z.object({
 	stale: z.boolean().nullable(),
 	fix_timestamp: z.string().datetime().nullable(),
 	client_timestamp: z.string().datetime().nullable(),
+	server_timestamp: z.string().datetime().nullable(),
 	battery: z.number().nullable(),
 	seq: z.number().int().nullable(),
 	interval_min: z.number().nullable(),
