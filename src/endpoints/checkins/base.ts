@@ -2,8 +2,8 @@ import { z } from "zod";
 
 export const checkin = z.object({
 	id: z.number().int(),
-	lat: z.number.float(),
-	long: z.number.float(),
+	lat: z.number(),
+	long: z.number(),
 	source: z.string(),
 	fix_timestamp: z.string().datetime(),
 	client_timestamp: z.string().datetime(),
