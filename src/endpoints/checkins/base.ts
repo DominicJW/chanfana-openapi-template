@@ -2,13 +2,19 @@ import { z } from "zod";
 
 export const checkin = z.object({
 	id: z.number().int(),
-	lat: z.number(),
-	long: z.number(),
-	source: z.string(),
-	fix_timestamp: z.string().datetime(),
+	lat: z.number().nullable(),
+	lon: z.number().nullable(),
+	accuracy: z.number().nullable(),
+	provider: z.string().nullable(),
+	stale: z.boolean(),
+	fix_timestamp: z.string().datetime().nullable(),
 	client_timestamp: z.string().datetime(),
-	server_timestamp: z.string().datetime(),
-});
+	battery: z.number(),
+	seq: z.number().int(),
+	interval_min: z.number(),
+	error: z.string().optional(),
+  });
+  
 
 export const CheckinModel = {
 	tableName: "checkins",
@@ -16,8 +22,7 @@ export const CheckinModel = {
 	schema: checkin,
 	serializer: (obj: Record<string, string | number | boolean>) => {
 		return {
-			...obj,
-			completed: Boolean(obj.completed),
+			...obj
 		};
 	},
 	serializerObject: checkin,
