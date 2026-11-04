@@ -6,13 +6,13 @@ export const checkin = z.object({
 	lon: z.number().nullable(),
 	accuracy: z.number().nullable(),
 	provider: z.string().nullable(),
-	stale: z.boolean(),
+	stale: z.boolean().nullable(),
 	fix_timestamp: z.string().datetime().nullable(),
-	client_timestamp: z.string().datetime(),
-	battery: z.number(),
-	seq: z.number().int(),
-	interval_min: z.number(),
-	error: z.string().optional(),
+	client_timestamp: z.string().datetime().nullable(),
+	battery: z.number().nullable(),
+	seq: z.number().int().nullable(),
+	interval_min: z.number().nullable(),
+	error: z.string().nullable(),
   });
   
 
