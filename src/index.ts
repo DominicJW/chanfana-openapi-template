@@ -2,10 +2,18 @@ import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
 import { requireApiKey } from "./auth";
 import { subRouter } from "./endpoints/checkins/router";
+import { checkinViewHtml, isCheckinView } from "./view";
 import { ContentfulStatusCode } from "hono/utils/http-status";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
+
+app.use("*", async (c, next) => {
+	if (isCheckinView(c)) {
+		return c.html(checkinViewHtml);
+	}
+	return next();
+});
 
 app.use("*", requireApiKey);
 

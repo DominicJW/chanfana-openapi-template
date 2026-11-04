@@ -45,6 +45,24 @@ describe("API key authentication", () => {
 		expect(response.status).not.toBe(401);
 	});
 
+	it("serves the check-in page without an API key", async () => {
+		const response = await SELF.fetch("http://local.test/view");
+		expect(response.status).toBe(200);
+		expect(response.headers.get("content-type") ?? "").toContain("text/html");
+		const html = await response.text();
+		expect(html).toContain("localStorage");
+		expect(html).toContain("google.com/maps");
+		expect(html).toContain("<table>");
+	});
+
+	it("serves the check-in page at / when the browser asks for HTML", async () => {
+		const response = await SELF.fetch("http://local.test/", {
+			headers: { Accept: "text/html" },
+		});
+		expect(response.status).toBe(200);
+		expect(response.headers.get("content-type") ?? "").toContain("text/html");
+	});
+
 	it("still serves the OpenAPI document", async () => {
 		const response = await SELF.fetch("http://local.test/openapi.json");
 		expect(response.status).toBe(200);

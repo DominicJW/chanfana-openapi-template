@@ -9,5 +9,5 @@ export class CheckinList extends D1ListEndpoint<HandleArgs> {
 
 	searchFields = ["lat","long","fix_timestamp","client_timestamp","server_timestamp"];
 
-	defaultOrderBy = "client_timestamp DESC";
+	defaultOrderBy = "fix_timestamp DESC";
 }
