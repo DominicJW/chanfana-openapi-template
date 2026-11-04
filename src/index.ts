@@ -1,8 +1,7 @@
 import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
-import { tasksRouter } from "./endpoints/tasks/router";
+import { subRouter } from "./endpoints/checkins/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
-import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -33,9 +32,9 @@ const openapi = fromHono(app, {
 	docs_url: "/",
 	schema: {
 		info: {
-			title: "My Awesome API",
-			version: "2.0.0",
-			description: "This is the documentation for my awesome API.",
+			title: "Location Checkin API",
+			version: "0",
+			description: "Simple API to allow me to checkin location via internet",
 		},
 	},
 });
